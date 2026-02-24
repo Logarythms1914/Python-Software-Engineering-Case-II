@@ -13,10 +13,10 @@ Python Software Engineering di platform PacMann.
   4. _calculate_ total belanja akhir berdasarkan tier membership PacCommerce.
 
 * Program menggunakan OOP dan dalam hal ini yang menjadi class adalah
-  User dengan nama class _MembershipUser_.
+  User dengan nama class _Membership_.
 
-* class MembershipUser:
+* class Membership:
   Atribut-atributnya adalah username, monthly_expense, monthly_income.
   Methode-methodnya adalah show_benefit, show_requirements, predict_membership,
   calculate_price.
-  
+
