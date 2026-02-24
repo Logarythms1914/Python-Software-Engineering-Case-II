@@ -39,8 +39,25 @@ class Membership:
             distance_table.append(round(jarak,5))
         
         indeks = distance_table.index(min(distance_table))
-        print(f'Anda cocok menjadi membership ' 
+        print(f'{self.username} cocok menjadi membership ' 
               f'{self.membership_plan[indeks + 1][0]}')
     
     
-Membership('Menas').predict_membership(9,12)
+    def calculate_price(self, membership, list_harga_barang):
+        self.benefit_table.pop(0)  # menghapus baris pertama pada table benefit
+        tier_list = [x[0] for x in self.benefit_table] # list tingkat membership
+        if membership not in tier_list or not isinstance(list_harga_barang, list):
+            raise Exception('Membershipmu tidak ditemukan atau input list harga barang salah.')
+        else:
+            indeks = 0
+            while membership != self.benefit_table[indeks][0]:
+                indeks += 1
+            
+            discount = self.benefit_table[indeks][1]
+            discount = discount.replace('%','')  # menghilangkan tanda % di diskon
+            discount = int(discount)/100  # mengubah tipe data diskon menjadi int lalu dibagi 100
+
+            final_price = sum(list_harga_barang) - sum(list_harga_barang) * discount
+
+            print(f'Total belanja {self.username} sebagai '
+                  f'membership {membership} adalah Rp{int(final_price):_}')
